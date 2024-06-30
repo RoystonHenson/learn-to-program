@@ -55,7 +55,7 @@ describe OldRomanNumeral do
       expect(orn.num_to_rom(num)).to eq('MDCLXXXVII')
     end
   end
-
+  
   describe '#print_num_to_rom' do
     it 'prints roman numeral for user to see' do
       num = 1

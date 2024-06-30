@@ -1,31 +1,29 @@
 class OldRomanNumeral
   attr_reader :number, :rom_number
 
-  def initialize
-    @rom_number = ''
-  end
-
   def get_num
     @number = $stdin.gets.chomp
   end
 
   def num_to_rom(number)
-      rom_number << 'M' * (number / 1000)
-      number %= 1000
-      rom_number << 'D' * (number / 500)
-      number %= 500
-      rom_number << 'C' * (number / 100)
-      number %= 100
-      rom_number << 'L' * (number / 50)
-      number %= 50
-      rom_number << 'X' * (number / 10)
-      number %= 10
-      rom_number << 'V' * (number / 5)
-      number %= 5
+    @rom_number = ''
+    number = convert_num_to_rom('M', 1000, number)
+    number = convert_num_to_rom('D', 500, number)
+    number = convert_num_to_rom('C', 100, number)
+    number = convert_num_to_rom('L', 50, number)
+    number = convert_num_to_rom('X', 10, number)
+    number = convert_num_to_rom('V', 5, number)
     rom_number << 'I' * number
   end
-
+  
   def print_num_to_rom
     puts rom_number
+  end
+
+  private
+
+  def convert_num_to_rom(character, divisor, number)
+    @rom_number << character * (number / divisor)
+    number %= divisor
   end
 end
