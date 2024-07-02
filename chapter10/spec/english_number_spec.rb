@@ -5,7 +5,7 @@ describe EnglishNumber do
 
   describe '#prompt_user' do
     it 'asks user to input number' do
-      expect { en.prompt_user }.to output('Hello! Please enter a number: ').to_stdout
+      expect { en.prompt_user }.to output('Hello! Please enter a number between 0-100: ').to_stdout
     end
   end
 

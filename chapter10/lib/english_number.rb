@@ -2,8 +2,13 @@ class EnglishNumber
     attr_reader :number, :eng_num
   
   def prompt_user
-    print 'Hello! Please enter a number: '
-    save_number($stdin.gets.chomp)
+    print 'Hello! Please enter a number between 0-100: '
+    @number = $stdin.gets.chomp.to_i
+    if number >= 0 && number <= 100
+      save_number(number)
+    else
+      prompt_user
+    end
   end
 
   def save_number(number)
@@ -85,7 +90,7 @@ class EnglishNumber
     when 1 then @eng_num = 'one'
     end
   end
-  
+
   def print_number
     print "#{number}? I think you mean #{eng_num}!"
   end
