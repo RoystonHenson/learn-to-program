@@ -66,33 +66,26 @@ class EnglishNumber
     elsif number == 10
       @eng_num = 'ten' 
     end
+
     one_to_nine(number)  
     @eng_num = 'zero' if number == 0 
     @eng_num
   end
 
   def one_to_nine(number)
-    if number == 9
-      @eng_num = 'nine' 
-    elsif number == 8
-      @eng_num = 'eight'
-    elsif number == 7
-      @eng_num = 'seven'
-    elsif number == 6
-      @eng_num = 'six'
-    elsif number == 5
-      @eng_num = 'five'
-    elsif number == 4 
-      @eng_num = 'four'
-    elsif number == 3
-      @eng_num = 'three'
-    elsif number == 2
-      @eng_num = 'two'
-    elsif number == 1
-      @eng_num = 'one'
+    case number
+    when 9 then @eng_num = 'nine' 
+    when 8 then @eng_num = 'eight'
+    when 7 then @eng_num = 'seven'
+    when 6 then @eng_num = 'six'
+    when 5 then @eng_num = 'five'
+    when 4 then @eng_num = 'four'
+    when 3 then @eng_num = 'three'
+    when 2 then @eng_num = 'two'
+    when 1 then @eng_num = 'one'
     end
   end
-
+  
   def print_number
     print "#{number}? I think you mean #{eng_num}!"
   end
