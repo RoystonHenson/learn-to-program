@@ -54,4 +54,3 @@ def birthday_helper
     puts "I'm sorry. That birthday is not in our database."
   end
 end
-birthday_helper
