@@ -1,5 +1,5 @@
 class OrangeTree
-  attr_accessor :height, :age, :oranges, :alive
+  attr_accessor :height, :age, :oranges
 
   def initialize
     @height = 3
