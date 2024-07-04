@@ -5,8 +5,12 @@ As a user, so my tree can simulate a real orange tree, I want it not to produce 
 As a user so I can skip to next year, I want to be able to pass time.
     
 As a user, so I can see my tree growing, I want my tree to get taller each year.
+
+As a user, so I can see the height, age and amount of oranges, I want to be able to inspect it.
     
-As a user, so I can enjoy my oranges, I want to be able to pick them.
+As a user, so I can make orange juice, I want to be able to pick an amount of oranges from the tree.
+
+As a user, so I can sell all my oranges, I want to be able to harvest all the oranges from the tree.
     
 As a user, to make my tree more realistic, I want the tree to have a finite life.
 
