@@ -4,34 +4,31 @@ describe OrangeTree do
   let(:tree) { OrangeTree.new }
 
   describe '#initialize' do
-    it 'has a height, age, no oranges and is alive' do
+    it 'has a height, age, no oranges' do
       expect(tree.height).to eq(3)
       expect(tree.age).to eq(0)
       expect(tree.oranges).to eq(0)
-      expect(tree.alive).to eq(true)
     end
   end
 
-  describe '#passage_of_time' do
+  describe '#passage_of_time'do
     context 'when tree is alive' do
       context 'when tree is 2 years old' do
-        let(:age) { 2 }
-
         it 'does not produce any oranges yet' do
+          tree.age = 2
         expect(tree.oranges).to eq(0)
         end
       end
 
       context 'when tree is 3 years old' do
-        let(:height) { 6 }
-        let(:age)    { 2 }
-        
         it 'the tree grows an extra 3 feet' do
+          tree.height = 6
           tree.passage_of_time
           expect(tree.height).to eq(9)
         end
 
         it 'the tree is one year older' do
+          tree.age = 2
           tree.passage_of_time
           expect(tree.age).to eq(3)
         end
@@ -50,10 +47,9 @@ describe OrangeTree do
     end
     
     context 'when tree is not alive' do
-      let(:alive) { false }
-
       it 'raises error' do
-        expect{ 
+        tree.age = 10
+        expect { 
           tree.passage_of_time }.to raise_error(
             RuntimeError, 'The tree has died and you are unable to interact with it. You will need to plant another tree.')
       end
@@ -62,42 +58,50 @@ describe OrangeTree do
   
   describe '#inspect' do
     context 'when tree is alive' do
-      let(:height)   { 9 }
-      let(:age)      { 3 }
-      let (:oranges) { 200 }
-
       it 'tells user tree height, age and amount of oranges' do
-        expect(tree.inspect_tree).to include('9 feet', '3 years old', '200 oranges')
+        tree.height = 9
+        tree.age = 3
+        tree.oranges = 200
+        expect { 
+          tree.inspect_tree }.to output(
+            "As you take a closer look at the tree you can see that it is #{tree.height}"\
+            " feet tall, #{tree.age} years old and has #{tree.oranges} oranges.").to_stdout
       end
     end
 
     context 'when tree is not alive' do
-      let(:alive) { false }
-
       it 'raises error' do
-        expect{ 
-          tree.inspect }.to raise_error(
-            RuntimeError, 'The tree has died and you are unable to interact with it. You will need to plant another tree.')
+        tree.age = 10
+        expect { 
+          tree.inspect_tree }.to raise_error(
+           RuntimeError, 'The tree has died and you are unable to interact with it. You will need to plant another tree.')
       end
     end
   end
 
   describe '#pick_oranges' do
     context 'when tree is alive' do
-      let(:oranges) { 5 }
+      context 'when enough oranges' do
+        it 'reduces oranges' do
+          tree.oranges = 5
+          tree.pick_oranges(5)
+          expect(tree.oranges).to eq(0)
+        end
+      end
 
-      it 'picks an amount of oranges' do
-        tree.pick_oranges(5)
-        expect(tree.oranges).to eq(0)
+      context 'when not enough oranges' do
+        it "tells user there aren't enough oranges" do
+          tree.oranges = 4
+          expect { tree.pick_oranges(5) }.to output("There aren't enough oranges for that.\n").to_stdout
+        end
       end
     end
 
     context 'when tree is not alive' do
-      let(:alive) { false }
-
       it 'raises error' do
+        tree.age = 10
         expect { 
-          tree.pick_oranges }.to raise_error(
+          tree.pick_oranges(5) }.to raise_error(
             RuntimeError, 'The tree has died and you are unable to interact with it. You will need to plant another tree.')
       end
     end
@@ -110,12 +114,16 @@ describe OrangeTree do
         tree.harvest_oranges
         expect(tree.oranges).to eq(0)
       end
+
+      it 'tells user how many oranges have been harvested' do
+        tree.oranges = 250
+        expect { tree.harvest_oranges }.to output("Your harvest has yielded #{tree.oranges} oranges!\n").to_stdout
+      end
     end
 
     context 'when tree is not alive' do
-      let(:alive) { false }
-
       it 'raises error' do
+        tree.age = 10
         expect { 
           tree.harvest_oranges }.to raise_error(
             RuntimeError, 'The tree has died and you are unable to interact with it. You will need to plant another tree.')
