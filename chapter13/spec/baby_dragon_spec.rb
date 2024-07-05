@@ -7,9 +7,10 @@ end
 
 describe BabyDragon do
   let(:bd) { BabyDragon.new('DracoFlare') }
-  before (:each) do
+  before(:each) do
     allow($stdin).to receive(:gets).and_return('no_gets') 
     bd.send(:intro)
+    allow(bd).to receive(:method_dispatch).and_return(false)
   end
 
   describe '#initilize' do
@@ -41,9 +42,9 @@ describe BabyDragon do
   end
 
   describe '#walk' do
-    
+
     it 'outputs walk description to user' do
-      bd.sleepy = 8
+      bd.hungry = 8
       expect {
         bd.walk }.to output(
           "With care and excitement, you take the spirited #{bd.name} and set out on a thrilling walk"\

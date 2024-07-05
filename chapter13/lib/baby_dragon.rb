@@ -17,6 +17,7 @@ class BabyDragon
     else
       puts "#{@name} squeaks and shakes their head, turning their mouth away from the food."
     end
+    method_dispatch
   end
 
   def walk
@@ -24,6 +25,7 @@ class BabyDragon
     @sleepy += 1
     puts "With care and excitement, you take the spirited #{@name} and set out on a thrilling walk"\
          " in our fascinating surroundings."
+    method_dispatch
   end
 
   def play
@@ -31,12 +33,14 @@ class BabyDragon
     @sleepy += 1
     puts "Engaging in a playful battle of wits, you toss objects towards the lively #{@name}"\
           ", who nimbly retrieves them with enthusiasm."
+    method_dispatch
   end
 
   def pet
     @sleepy += 1
     puts "As your hands brush their soft scales, #{@name} tilts their head slightly and lets"\
          " out a series of low rumbling and sqweaking noises."
+    method_dispatch
   end
 
   def train
@@ -59,6 +63,7 @@ class BabyDragon
     @hungry += 3
     @sleepy += 1
     @training += 1
+    method_dispatch
   end
 
   private
@@ -66,6 +71,26 @@ class BabyDragon
   def intro
     puts 'You found a large egg while walking the other day and you brought it home.'
     puts 'It just hatched and out popped a baby dragon!'
+  end
+
+  def method_dispatch
+    puts "\n--MENU--".center(60)
+    puts "\n\tFeed:\tFeed your baby dragon!\n\tWalk:\tTake your baby dragon for a walk!"
+    puts "\tPlay:\tHave some fun with your baby dragon!\n\tPet:\tShow your baby dragon"\
+         " some affection!\n\tTrain:\tTeach your baby dragon some new tricks!"
+    puts "\tExit:\t Exit the game. :("
+    @choice = $stdin.gets.chomp.downcase
+    case choice
+    when 'feed' then feed
+    when 'walk' then walk
+    when 'play' then play
+    when 'pet' then pet
+    when 'train' then train
+    when 'exit' then exit(0)
+    else
+      puts 'Please select one of the options: '
+      method_dispatch
+    end
   end
 end
 
