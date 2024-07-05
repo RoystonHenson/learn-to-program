@@ -95,13 +95,19 @@ describe BabyDragon do
         bd.train
         expect(bd.training).to eq(1)
       end
+
+      it 'increases hunger' do
+        bd.hungry = 5
+        bd.train
+        expect(bd.hungry).to eq(8)
+      end
     end
 
     context 'when training level is 0' do  
       it 'outputs squeak description' do
         expect { 
           bd.train }.to output(
-            "#{bd.name} let's out a soft, high-pitched squeak before staring back at you with big eyes."\
+            "#{bd.name} let's out a soft, high-pitched squeak before staring back at you with googly eyes."\
             " This might take a while...\n").to_stdout
       end
     end
@@ -137,7 +143,7 @@ describe BabyDragon do
 
     context 'when training level is 4' do
       it 'outputs hover description' do
-        be.training = 4
+        bd.training = 4
         expect { 
           bd.train }.to output(
             "#{bd.name} flaps their wings frantically before managing to hover briefly, a dazed"\
@@ -165,8 +171,10 @@ end
   As a dragon owner, to teach my dragon new tricks, I want to be able to train my dragon.
 As a dragon owner, to mimic a live animal, I want my dragon to get hungry.
    hunger = 8 will tell user is hungry
+          9 very hungry
           = 10 will go eat a neighbours pet
 As a dragon owner, to mimic a live animal, I want my dragon to get sleepy.
     sleepy = 8 look sleepy
+    9 - very sleepy
             = 10 will pass out
 =end

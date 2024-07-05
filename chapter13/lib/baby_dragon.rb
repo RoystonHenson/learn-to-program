@@ -40,7 +40,24 @@ class BabyDragon
   end
 
   def train
-
+    if @training == 0
+      puts "#{@name} let's out a soft, high-pitched squeak before staring back at you with googly eyes."\
+           " This might take a while..."
+    elsif @training == 1
+      puts "#{@name} scrunches up their face and lets out a curious and comical puff of smoke."
+    elsif @training == 2
+      puts "#{@name} flaps their small wings attempting flight causing a comical, deflating 'whoosh'"\
+            " as they zigzag across the room like an overexcited newborn penguin."
+    elsif @training == 3
+      puts "#{@name} squeaks and releases a scorching puff of fire directed at an unsuspecting"\
+            " houseplant, setting it on fire briefly before you put it out."
+    else
+      puts "#{@name} flaps their wings frantically before managing to hover briefly, a dazed"\
+            " expression adorning their scaly face as they wonder how on earth they managed to"\
+            " accomplish such a feat."
+    end
+    @hungry += 3
+    @training += 1
   end
 
   private
@@ -56,12 +73,11 @@ class BabyDragon
     case choice
     when 'feed' then feed
     else
-      #exit(0)
     end
   end
 end
 
 
 
-"As your hands gracefully brush his soft scales, DracoFlare tilts his head in serene contentment, absorbing the delicate, nurturing touch, visibly savoring the moments of bonding.\n"
-"As your hands brush their soft scales, DracoFlare tilts their head slightly and lets out a series of low rumbling and sqweaking noises.\n"
+"DracoFlare flaps their small wings attempting flight causing a comical, deflating 'whoosh' as they zigzag across the room like an overexcited newborn penguin.\n"
+"DracoFlare squeaks and releases a scorching puff of fire directed at an unsuspecting houseplant, setting it on fire briefly before you put it out.\n"
