@@ -8,12 +8,12 @@ class BabyDragon
     @hungry = 5
     @sleepy = 5
     intro
-    method_dispatch
   end
 
   def feed
     if hungry > 3
       @hungry -= 4
+      puts "You give #{@name} some snacks and they chomp them down in no time!"
     else
       puts "#{@name} squeaks and shakes their head, turning their mouth away from the food."
     end
@@ -23,7 +23,7 @@ class BabyDragon
     @hungry += 1
     @sleepy += 1
     puts "With care and excitement, you take the spirited #{@name} and set out on a thrilling walk"\
-          " in our fascinating surroundings."
+         " in our fascinating surroundings."
   end
 
   def play
@@ -57,6 +57,7 @@ class BabyDragon
             " accomplish such a feat."
     end
     @hungry += 3
+    @sleepy += 1
     @training += 1
   end
 
@@ -66,18 +67,6 @@ class BabyDragon
     puts 'You found a large egg while walking the other day and you brought it home.'
     puts 'It just hatched and out popped a baby dragon!'
   end
-
-  def method_dispatch
-    puts 'MENU'
-    @choice = $stdin.gets.chomp.downcase
-    case choice
-    when 'feed' then feed
-    else
-    end
-  end
 end
 
 
-
-"DracoFlare flaps their small wings attempting flight causing a comical, deflating 'whoosh' as they zigzag across the room like an overexcited newborn penguin.\n"
-"DracoFlare squeaks and releases a scorching puff of fire directed at an unsuspecting houseplant, setting it on fire briefly before you put it out.\n"

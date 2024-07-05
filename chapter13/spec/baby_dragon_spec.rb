@@ -41,7 +41,9 @@ describe BabyDragon do
   end
 
   describe '#walk' do
+    
     it 'outputs walk description to user' do
+      bd.sleepy = 8
       expect {
         bd.walk }.to output(
           "With care and excitement, you take the spirited #{bd.name} and set out on a thrilling walk"\
@@ -96,10 +98,12 @@ describe BabyDragon do
         expect(bd.training).to eq(1)
       end
 
-      it 'increases hunger' do
+      it 'increases hunger and sleepiness' do
         bd.hungry = 5
+        bd.sleepy = 5
         bd.train
         expect(bd.hungry).to eq(8)
+        expect(bd.sleepy).to eq(6)
       end
     end
 
@@ -151,30 +155,5 @@ describe BabyDragon do
             " accomplish such a feat.\n").to_stdout
       end
     end
-  end
-
-  
-
-  #describe '#sleepy?' do
-  #7 10
-  #end
-
-  #describe '#hungry?' do
-  #7 10
-  #end    
+  end   
 end
-=begin
-  As a dragon owner, to keep my dragon alive, I want to be able to feed my dragon.
-  As a dragon owner, to get some exercise, I want to be able to walk my dragon.
-  As a dragon owner, to have some fun, I want to be able to play with my dragon.
-  As a dragon owner, to show my appreciation, I want to be able to pet my dragon.
-  As a dragon owner, to teach my dragon new tricks, I want to be able to train my dragon.
-As a dragon owner, to mimic a live animal, I want my dragon to get hungry.
-   hunger = 8 will tell user is hungry
-          9 very hungry
-          = 10 will go eat a neighbours pet
-As a dragon owner, to mimic a live animal, I want my dragon to get sleepy.
-    sleepy = 8 look sleepy
-    9 - very sleepy
-            = 10 will pass out
-=end
